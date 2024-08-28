@@ -1,10 +1,9 @@
 package com.example.service.integration_app.controller;
 
-import com.example.service.integration_app.clients.OkHttpClientSender;
+import com.example.service.integration_app.clients.WebClientSender;
 import com.example.service.integration_app.model.EntityModel;
 import com.example.service.integration_app.model.UpsertEntityRequest;
 import lombok.RequiredArgsConstructor;
-import okhttp3.OkHttpClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +16,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EntityClientController {
 
-    private final OkHttpClientSender client;
+    private final WebClientSender client;
 
-    @GetMapping
-    public ResponseEntity<List<EntityModel>> entityList() {
-        return ResponseEntity.ok(client.getEntityList());
-    }
+//    @GetMapping
+//    public ResponseEntity<List<EntityModel>> entityList() {
+//        return ResponseEntity.ok(client.getEntityList());
+//    }
 
     @GetMapping("/{name}")
     public ResponseEntity<EntityModel> entityByName(@PathVariable String name) {
