@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    generate-ddl: true
+  datasource:
+    hikari:
+      schema: app_schema
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS app_schema;
+      connection-timeout: 10000
+
+app:
+  redis:
+    enabled: true
+  integration:
+    base-url: http://localhost:8082
+  cache:
+    cacheType: redis
+    cache-names:
+      - databaseEntities
+      - databaseEntitiesByName
+      - databaseEntitiesById
+    caches:
+      databaseEntities:
+        expiry: 10s
+      databaseEntitiesByName:
+        expiry: 10s
+      databaseEntitiesById:
+        expiry: 10s
